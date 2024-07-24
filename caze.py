@@ -5,7 +5,7 @@ import os
 from googleapiclient.discovery import build
 
 # Defina sua chave de API
-api_key = 'AIzaSyDQGhmiS270ifXFpUa8c7zA75TtqPJk5Xg'
+api_key = ''
 
 # Crie o serviço de conexão com a API do YouTube
 youtube = build('youtube', 'v3', developerKey=api_key)
