@@ -1,3 +1,6 @@
+Para salvar os resultados em um arquivo ao invés de apenas imprimir no console, você pode usar o seguinte código:
+
+```python
 import os
 from googleapiclient.discovery import build
 
@@ -29,11 +32,18 @@ videos = [{
 } for item in response['items']]
 live_count = len(response['items'])
 
-print(f'Quantidade de lives: {live_count}')
-for video in videos:
-    #print(f"Título: {video['title']}, ID: {video['video_id']}, Imagem: {video['thumbnail_url']}")
-    img = str(video['thumbnail_url'])
-    titulo =str(video['title'])
-    ids = str(video['video_id'])
-    print('#EXTINF:-1 tvg-id="" tvg-logo="'+img+'",'+titulo+'')
-    print('plugin://plugin.video.youtube/play/?video_id='+ids+'')
+# Abra um arquivo para escrita
+with open('lives.m3u', 'w', encoding='utf-8') as f:
+    f.write(f'#EXTM3U\n')
+    f.write(f'# Quantidade de lives: {live_count}\n')
+    for video in videos:
+        img = str(video['thumbnail_url'])
+        titulo = str(video['title'])
+        ids = str(video['video_id'])
+        f.write(f'#EXTINF:-1 tvg-id="" tvg-logo="{img}",{titulo}\n')
+        f.write(f'plugin://plugin.video.youtube/play/?video_id={ids}\n')
+
+print('Arquivo lives.m3u salvo com sucesso!')
+```
+
+Este código salvará as informações dos vídeos em um arquivo chamado `lives.m3u` no mesmo diretório onde o script está sendo executado.
