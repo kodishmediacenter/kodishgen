@@ -1,17 +1,17 @@
 # Instalando Bluetooth
 sudo pacman -S bluez bluez-utils blueman
-echo  '' > /etc/bluetooth/main.conf 
-echo  'AutoEnable=true' >> /etc/bluetooth/main.conf
-systemctl start bluetooth
-systemctl enable bluetooth
+sudo echo  '' > /etc/bluetooth/main.conf 
+sudo echo  'AutoEnable=true' >> /etc/bluetooth/main.conf
+sudo systemctl start bluetooth
+sudo systemctl enable bluetooth
 
  
 #Habilitando Serviços Essenciais
-systemctl enable lightdm.service
+sudo systemctl enable lightdm.service
 # Instalando flatpaks
-sudo flatpak install flathub com.obsproject.Studio
-sudo flatpak install flathub com.stremio.Stremio
-sudo flatpak install flathub org.chromium.Chromium
+sudo flatpak install flathub com.obsproject.Studio -y 
+sudo flatpak install flathub com.stremio.Stremio -y 
+sudo flatpak install flathub org.chromium.Chromium -y
 
 # Instalando Flex Laucher
 
