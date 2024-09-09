@@ -11,13 +11,11 @@
         "sys_enc": "UTF-8",
         "sys_lang": "en_US"
     },
-    
-	"no_pkg_lookups": false,
+    "no_pkg_lookups": false,
     "ntp": true,
     "offline": false,
     "packages": ["xfce4","xfce4-goodies","lightdm","lightdm-gtk-greeter","kodi","asunder","networkmanager","firefox","gparted","wget","flatpak"],
     "parallel downloads": 0,
-    "services": {"enabled": ["lightdm.service","NetworkManager.service"]},
     "profile_config": null,
     "save_config": null,
     "script": "guided",
