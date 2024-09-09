@@ -1,0 +1,30 @@
+{
+	"additional-repositotories":[],
+	"archinstall-language": "Portuguese",
+	"bootloader": "Grub",
+	"config_version": "2.8.6",
+	"debug": false,
+	"hostname": "kodish-htpc"
+	"Kernels": [
+		"linux"
+	],
+	"locale_config": {
+        "kb_layout": "br-abnt2",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    
+	"no_pkg_lookups": false,
+    "ntp": true,
+    "offline": false,
+    "packages": [],
+    "parallel downloads": 0,
+    "profile_config": null,
+    "save_config": null,
+    "script": "guided",
+    "silent": false,
+    "swap": true,
+    "timezone": "UTC",
+    "version": "2.6.0"
+
+}
