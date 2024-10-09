@@ -2,7 +2,7 @@
   "language": "pt_BR",
   "keyboard_layout": "br-abnt2",
   "mirror-region": "Brazil",
-  "bootloader": "grub-install",
+  "bootloader": "Grub",
   "partitions": {
     "disk": "ask",            
     "layout": "ask",           
