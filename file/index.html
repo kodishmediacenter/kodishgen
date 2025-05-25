@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página com Upload</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px; /* Ajuste a margem conforme necessário */
+        }
+
+        #file-upload {
+            display: none; /* Esconder o input file */
+        }
+
+        label {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            display: inline-block; /* Adicionado para corrigir um problema de layout no Firefox */
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px; /* Ajuste o padding conforme necessário para tornar o botão "Enviar" do mesmo tamanho */
+            font-size: 16px;
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            display: inline-block; /* Adicionado para corrigir um problema de layout no Firefox */
+        }
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="Logo">
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="file-upload">Upload</label>
+        <input type="file" id="file-upload" name="file" accept=".png, .jpg, .jpeg, .zip" />
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+</html>
