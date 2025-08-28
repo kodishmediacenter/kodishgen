@@ -1,21 +1,18 @@
 <h1>Chave Pix:</h1>
 <h2 id="pix-chave">fabiolmglgeo@gmail.com</h2>
-<button onclick="copiarPix()">
-  <img src="https://raw.githubusercontent.com/kodishmediacenter/kodishgen/refs/heads/main/cafe/download.png" 
-       alt="Copiar" width="20" style="vertical-align: middle;">
-  Copiar chave
-</button>
+<button onclick="copiarPix()">Copiar chave</button>
 
 <h1>Chave Pix (copia e cola):</h1>
 <pre id="pix-copia">
 00020126440014BR.GOV.BCB.PIX0122fabiolmglgeo@gmail.com5204000053039865802BR5901N6001C62140510CAFEKODISH63047CC8
 </pre>
-<button onclick="copiarCodigo()">
-  <img src="https://raw.githubusercontent.com/kodishmediacenter/kodishgen/refs/heads/main/cafe/download.png" 
-       alt="Copiar" width="20" style="vertical-align: middle;">
-  Copiar código
-</button>
+<button onclick="copiarCodigo()">Copiar código</button>
 
+<!-- Imagem abaixo do último botão -->
+<br><br>
+<img src="https://raw.githubusercontent.com/kodishmediacenter/kodishgen/refs/heads/main/cafe/download.png" 
+     alt="Download Pix" width="80">
+     
 <script>
 function copiarPix() {
   const chave = document.getElementById("pix-chave").innerText;
