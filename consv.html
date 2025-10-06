@@ -1,64 +1,150 @@
-# Teste de Tendência Ideológica
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teste Ideológico Interativo</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+  h1 { color: #333; }
+  .pergunta { margin-bottom: 15px; }
+  .respostas label { margin-right: 15px; }
+  #resultado { margin-top: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+  pre { background: #eee; padding: 10px; border-radius: 5px; }
+</style>
+</head>
+<body>
 
-# Perguntas do teste
-perguntas = [
-    "1. A família tradicional (pai, mãe e filhos) é a base essencial da sociedade.",
-    "2. A religião deve ter um papel importante na formação moral das pessoas.",
-    "3. Valores morais antigos ainda são os melhores guias para a vida moderna.",
-    "4. A autoridade (pais, professores, Estado) deve ser respeitada sem questionamentos.",
-    "5. O patriotismo é uma virtude e deve ser incentivado desde cedo.",
-    "6. As mudanças sociais rápidas estão enfraquecendo nossa cultura.",
-    "7. Questões de gênero e sexualidade devem seguir padrões tradicionais.",
-    "8. O progresso social deve respeitar os costumes e tradições do país.",
-    "9. A liberdade individual deve estar subordinada ao bem coletivo e à ordem social.",
-    "10. A sociedade era moralmente mais correta no passado do que é hoje."
-]
+<h1>🧭 Teste de Tendência Ideológica</h1>
+<form id="testeForm">
+  <div class="pergunta">
+    <p>1. A família tradicional (pai, mãe e filhos) é a base essencial da sociedade.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q1" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q1" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q1" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
 
-# Função para converter respostas em pontos
-def pontuar(resposta):
-    if resposta.upper() == "A":
-        return 2
-    elif resposta.upper() == "B":
-        return 1
-    elif resposta.upper() == "O":
-        return 0
-    else:
-        print("Resposta inválida. Contabilizando como 0 ponto.")
-        return 0
+  <div class="pergunta">
+    <p>2. A religião deve ter um papel importante na formação moral das pessoas.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q2" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q2" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q2" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
 
-# Coletar respostas e calcular pontuação total
-total = 0
-print("Responda cada pergunta com: 🅰️ Concordo, 🅱️ Neutro/Depende, 🅾️ Discordo\n")
+  <div class="pergunta">
+    <p>3. Valores morais antigos ainda são os melhores guias para a vida moderna.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q3" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q3" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q3" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
 
-for pergunta in perguntas:
-    while True:
-        resp = input(f"{pergunta}\nSua resposta (A/B/O): ")
-        if resp.upper() in ["A","B","O"]:
-            total += pontuar(resp)
-            break
-        else:
-            print("Opção inválida. Tente novamente.")
+  <div class="pergunta">
+    <p>4. A autoridade (pais, professores, Estado) deve ser respeitada sem questionamentos.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q4" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q4" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q4" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
 
-# Determinar classificação
-if total <= 6:
-    tendencia = "🟣 Progressista"
-    interpretacao = "Você valoriza a mudança, a diversidade e o avanço social. Questiona tradições e acredita que a moral deve evoluir conforme a sociedade. Prefere diálogo e liberdade individual a regras fixas."
-elif total <= 13:
-    tendencia = "🟢 Moderado"
-    interpretacao = "Você busca equilíbrio entre tradição e progresso. Reconhece o valor dos costumes, mas aceita mudanças quando trazem benefícios sociais. A moral é importante, mas não deve ser imutável."
-else:
-    tendencia = "🔵 Conservador"
-    interpretacao = "Você valoriza fortemente a tradição, a moral e a autoridade. Acredita que mudanças devem ser lentas e cautelosas, preservando os valores que sustentam a ordem e a família. Prefere estabilidade a rupturas sociais."
+  <div class="pergunta">
+    <p>5. O patriotismo é uma virtude e deve ser incentivado desde cedo.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q5" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q5" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q5" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
 
-# Exibir resultado
-print("\n=== RESULTADO DO TESTE ===")
-print(f"Pontuação total: {total}/20")
-print(f"Tendência ideológica: {tendencia}")
-print(f"Interpretação: {interpretacao}")
+  <div class="pergunta">
+    <p>6. As mudanças sociais rápidas estão enfraquecendo nossa cultura.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q6" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q6" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q6" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
 
-# Exibir bússola ideológica
-print("\nBússola Ideológica:")
-print("""
+  <div class="pergunta">
+    <p>7. Questões de gênero e sexualidade devem seguir padrões tradicionais.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q7" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q7" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q7" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
+
+  <div class="pergunta">
+    <p>8. O progresso social deve respeitar os costumes e tradições do país.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q8" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q8" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q8" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
+
+  <div class="pergunta">
+    <p>9. A liberdade individual deve estar subordinada ao bem coletivo e à ordem social.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q9" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q9" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q9" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
+
+  <div class="pergunta">
+    <p>10. A sociedade era moralmente mais correta no passado do que é hoje.</p>
+    <div class="respostas">
+      <label><input type="radio" name="q10" value="2"> 🅰️ Concordo</label>
+      <label><input type="radio" name="q10" value="1"> 🅱️ Neutro / Depende</label>
+      <label><input type="radio" name="q10" value="0"> 🅾️ Discordo</label>
+    </div>
+  </div>
+
+  <button type="button" onclick="calcularResultado()">Ver Resultado</button>
+</form>
+
+<div id="resultado"></div>
+
+<script>
+function calcularResultado() {
+    let total = 0;
+    for (let i = 1; i <= 10; i++) {
+        const resposta = document.querySelector('input[name="q'+i+'"]:checked');
+        if (resposta) {
+            total += parseInt(resposta.value);
+        } else {
+            alert("Por favor, responda todas as perguntas.");
+            return;
+        }
+    }
+
+    let tendencia = "";
+    let interpretacao = "";
+
+    if (total <= 6) {
+        tendencia = "🟣 Progressista";
+        interpretacao = "Você valoriza a mudança, a diversidade e o avanço social. Questiona tradições e acredita que a moral deve evoluir conforme a sociedade. Prefere diálogo e liberdade individual a regras fixas.";
+    } else if (total <= 13) {
+        tendencia = "🟢 Moderado";
+        interpretacao = "Você busca equilíbrio entre tradição e progresso. Reconhece o valor dos costumes, mas aceita mudanças quando trazem benefícios sociais. A moral é importante, mas não deve ser imutável.";
+    } else {
+        tendencia = "🔵 Conservador";
+        interpretacao = "Você valoriza fortemente a tradição, a moral e a autoridade. Acredita que mudanças devem ser lentas e cautelosas, preservando os valores que sustentam a ordem e a família. Prefere estabilidade a rupturas sociais.";
+    }
+
+    document.getElementById("resultado").innerHTML = `
+        <h2>Resultado do Teste</h2>
+        <p>Pontuação: ${total}/20</p>
+        <p>Tendência Ideológica: ${tendencia}</p>
+        <p>Interpretação: ${interpretacao}</p>
+        <pre>
            Tradição
               ↑
    Conservador 🔵 (14–20)
@@ -68,4 +154,10 @@ print("""
    Progressista 🟣 (0–6)
               ↓
            Mudança
-""")
+        </pre>
+    `;
+}
+</script>
+
+</body>
+</html>
