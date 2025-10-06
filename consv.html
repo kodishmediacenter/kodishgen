@@ -1,0 +1,71 @@
+# Teste de Tendência Ideológica
+
+# Perguntas do teste
+perguntas = [
+    "1. A família tradicional (pai, mãe e filhos) é a base essencial da sociedade.",
+    "2. A religião deve ter um papel importante na formação moral das pessoas.",
+    "3. Valores morais antigos ainda são os melhores guias para a vida moderna.",
+    "4. A autoridade (pais, professores, Estado) deve ser respeitada sem questionamentos.",
+    "5. O patriotismo é uma virtude e deve ser incentivado desde cedo.",
+    "6. As mudanças sociais rápidas estão enfraquecendo nossa cultura.",
+    "7. Questões de gênero e sexualidade devem seguir padrões tradicionais.",
+    "8. O progresso social deve respeitar os costumes e tradições do país.",
+    "9. A liberdade individual deve estar subordinada ao bem coletivo e à ordem social.",
+    "10. A sociedade era moralmente mais correta no passado do que é hoje."
+]
+
+# Função para converter respostas em pontos
+def pontuar(resposta):
+    if resposta.upper() == "A":
+        return 2
+    elif resposta.upper() == "B":
+        return 1
+    elif resposta.upper() == "O":
+        return 0
+    else:
+        print("Resposta inválida. Contabilizando como 0 ponto.")
+        return 0
+
+# Coletar respostas e calcular pontuação total
+total = 0
+print("Responda cada pergunta com: 🅰️ Concordo, 🅱️ Neutro/Depende, 🅾️ Discordo\n")
+
+for pergunta in perguntas:
+    while True:
+        resp = input(f"{pergunta}\nSua resposta (A/B/O): ")
+        if resp.upper() in ["A","B","O"]:
+            total += pontuar(resp)
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+# Determinar classificação
+if total <= 6:
+    tendencia = "🟣 Progressista"
+    interpretacao = "Você valoriza a mudança, a diversidade e o avanço social. Questiona tradições e acredita que a moral deve evoluir conforme a sociedade. Prefere diálogo e liberdade individual a regras fixas."
+elif total <= 13:
+    tendencia = "🟢 Moderado"
+    interpretacao = "Você busca equilíbrio entre tradição e progresso. Reconhece o valor dos costumes, mas aceita mudanças quando trazem benefícios sociais. A moral é importante, mas não deve ser imutável."
+else:
+    tendencia = "🔵 Conservador"
+    interpretacao = "Você valoriza fortemente a tradição, a moral e a autoridade. Acredita que mudanças devem ser lentas e cautelosas, preservando os valores que sustentam a ordem e a família. Prefere estabilidade a rupturas sociais."
+
+# Exibir resultado
+print("\n=== RESULTADO DO TESTE ===")
+print(f"Pontuação total: {total}/20")
+print(f"Tendência ideológica: {tendencia}")
+print(f"Interpretação: {interpretacao}")
+
+# Exibir bússola ideológica
+print("\nBússola Ideológica:")
+print("""
+           Tradição
+              ↑
+   Conservador 🔵 (14–20)
+              |
+   Moderado 🟢 (7–13)
+              |
+   Progressista 🟣 (0–6)
+              ↓
+           Mudança
+""")
