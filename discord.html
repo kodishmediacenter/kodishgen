@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Convite - Kodish Team</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#5865F2;--glass:rgba(255,255,255,0.04);--text:#e6eef8}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#071023 0%,#0b1728 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    .card{width:min(760px,92%);background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.02));border-radius:14px;padding:36px;box-shadow:0 8px 30px rgba(2,6,23,0.6);color:var(--text);text-align:center}
+    h1{margin:0 0 18px;font-size:20px}
+    p.invite{margin:0 0 28px;color:rgba(230,238,248,0.9);line-height:1.35}
+    .buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn{appearance:none;border:0;padding:12px 18px;border-radius:10px;font-weight:600;cursor:pointer;min-width:160px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#4757e6);color:white;box-shadow:0 6px 18px rgba(88,101,242,0.18)}
+    .btn-ghost{background:var(--glass);color:var(--text);border:1px solid rgba(255,255,255,0.04)}
+    small.hint{display:block;margin-top:16px;color:rgba(230,238,248,0.6)}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:60}
+    .modal{width:min(900px,96%);max-height:86vh;background:#071127;border-radius:12px;padding:16px;overflow:hidden;display:flex;flex-direction:column}
+    .modal header{display:flex;align-items:center;justify-content:space-between;padding:6px 8px}
+    .modal header h2{margin:0;font-size:16px}
+    .modal .frame{flex:1;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+    .close-btn{background:transparent;border:0;color:var(--text);font-size:18px;cursor:pointer;padding:8px}
+
+    /* Responsive */
+    @media (max-width:480px){.btn{min-width:130px;padding:10px 12px}}
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Convite para o Discord - Kodish Team</h1>
+    <p class="invite">Olá Fabio da Team Kodish te convidou para fazer parte do Discord da Kodish Team, mas temos regras — não abro mão. Leia antes de entrar.</p>
+
+    <div class="buttons">
+      <!-- Botão que abre modal com as regras (carrega o link X dentro do iframe) -->
+      <button class="btn btn-ghost" id="openRules">Ver Regras</button>
+
+      <!-- Botão que abre o convite do Discord (link Y) -->
+      <button class="btn btn-primary" id="joinDiscord">Entrar no Discord</button>
+    </div>
+
+    <small class="hint">Clique em "Ver Regras" para abrir as regras em uma janela; clique em "Entrar no Discord" para abrir o convite do servidor.</small>
+  </main>
+
+  <!-- Modal que exibe o link X em iframe -->
+  <div class="modal-backdrop" id="backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
+      <header>
+        <h2 id="rulesTitle">Regras da Kodish Team</h2>
+        <button class="close-btn" id="closeModal" aria-label="Fechar">✕</button>
+      </header>
+      <div class="frame" id="frameContainer">
+        <!-- Substitua o valor do atributo src abaixo pelo link das regras (X) -->
+        <iframe id="rulesFrame" src="about:blank" title="Regras" style="width:100%;height:100%;border:0;min-height:420px"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Substitua X e Y pelos URLs reais
+    const RULES_URL = 'https://example.com/regras-x'; // <-- troque por X
+    const INVITE_URL = 'https://discord.gg/yours-invite-code'; // <-- troque por Y
+
+    const openRulesBtn = document.getElementById('openRules');
+    const joinBtn = document.getElementById('joinDiscord');
+    const backdrop = document.getElementById('backdrop');
+    const closeModal = document.getElementById('closeModal');
+    const rulesFrame = document.getElementById('rulesFrame');
+
+    openRulesBtn.addEventListener('click', () => {
+      // Abre modal e carrega link X no iframe
+      rulesFrame.src = RULES_URL;
+      backdrop.style.display = 'flex';
+      backdrop.setAttribute('aria-hidden','false');
+    });
+
+    closeModal.addEventListener('click', () => {
+      backdrop.style.display = 'none';
+      backdrop.setAttribute('aria-hidden','true');
+      // limpa iframe para interromper áudio/vídeo que porventura esteja tocando
+      rulesFrame.src = 'about:blank';
+    });
+
+    // Fecha clicando fora da modal
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal.click();
+    });
+
+    // Botão para abrir convite do discord em nova aba
+    joinBtn.addEventListener('click', () => {
+      window.open(INVITE_URL, '_blank', 'noopener');
+    });
+
+    // Atalho: tecla Esc fecha modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && backdrop.style.display === 'flex') closeModal.click();
+    });
+  </script>
+</body>
+</html>
