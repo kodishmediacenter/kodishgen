@@ -35,6 +35,7 @@ class IANavigator {
         this.links = [];
         this.selectedItem = null;
         this.filteredLinks = [];
+        this.currentSite = null;
         this.init();
     }
 
@@ -64,6 +65,11 @@ class IANavigator {
         document.getElementById('openBtn').addEventListener('click', () => this.openLink());
         document.getElementById('addBtn').addEventListener('click', () => this.showAddModal());
         document.getElementById('removeBtn').addEventListener('click', () => this.removeLink());
+        document.getElementById('backBtn').addEventListener('click', () => this.hideIframe());
+
+        // Controles do iframe
+        document.getElementById('refreshBtn').addEventListener('click', () => this.refreshIframe());
+        document.getElementById('closeIframeBtn').addEventListener('click', () => this.hideIframe());
 
         // Modal
         document.querySelector('.close').addEventListener('click', () => this.hideAddModal());
@@ -82,6 +88,13 @@ class IANavigator {
         document.getElementById('iaList').addEventListener('dblclick', (e) => {
             if (e.target.closest('.ia-item')) {
                 this.openLink();
+            }
+        });
+
+        // Tecla Escape para voltar
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isIframeVisible()) {
+                this.hideIframe();
             }
         });
     }
@@ -119,6 +132,10 @@ class IANavigator {
         const hasSelection = this.selectedItem !== null;
         document.getElementById('openBtn').disabled = !hasSelection;
         document.getElementById('removeBtn').disabled = !hasSelection;
+        
+        // Mostrar/ocultar botão voltar baseado no iframe
+        const iframeVisible = this.isIframeVisible();
+        document.getElementById('backBtn').style.display = iframeVisible ? 'inline-block' : 'none';
     }
 
     filterList(searchTerm) {
@@ -140,8 +157,61 @@ class IANavigator {
 
         const link = this.links.find(l => l.name === this.selectedItem);
         if (link) {
-            window.open(link.url, '_blank');
+            this.showIframe(link);
         }
+    }
+
+    showIframe(link) {
+        this.currentSite = link;
+        
+        // Mostrar container do iframe
+        const iframeContainer = document.getElementById('iframeContainer');
+        const container = document.querySelector('.container');
+        
+        iframeContainer.style.display = 'flex';
+        document.body.classList.add('iframe-active');
+        
+        // Atualizar header
+        document.getElementById('currentSite').textContent = link.name;
+        
+        // Carregar URL no iframe
+        const iframe = document.getElementById('iaFrame');
+        iframe.src = link.url;
+        
+        // Adicionar loading state
+        iframe.onload = () => {
+            console.log(`Site ${link.name} carregado`);
+        };
+        
+        iframe.onerror = () => {
+            console.error(`Erro ao carregar ${link.name}`);
+            document.getElementById('currentSite').textContent = `${link.name} - Erro ao carregar`;
+        };
+        
+        this.updateButtons();
+    }
+
+    hideIframe() {
+        const iframeContainer = document.getElementById('iframeContainer');
+        const iframe = document.getElementById('iaFrame');
+        
+        iframeContainer.style.display = 'none';
+        document.body.classList.remove('iframe-active');
+        
+        // Parar o carregamento do iframe
+        iframe.src = '';
+        this.currentSite = null;
+        
+        this.updateButtons();
+    }
+
+    refreshIframe() {
+        const iframe = document.getElementById('iaFrame');
+        iframe.src = iframe.src;
+    }
+
+    isIframeVisible() {
+        return document.getElementById('iframeContainer').style.display === 'flex';
     }
 
     showAddModal() {
@@ -183,7 +253,6 @@ class IANavigator {
         this.renderList();
         this.hideAddModal();
 
-        // Mostrar mensagem de sucesso
         alert(`IA "${name}" adicionada com sucesso!`);
     }
 
