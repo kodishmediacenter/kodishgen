@@ -34,6 +34,25 @@
             <button id="removeBtn" class="btn btn-danger">
                 <i class="fas fa-trash"></i> Remover IA
             </button>
+            <button id="backBtn" class="btn btn-warning" style="display: none;">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+        </div>
+
+        <!-- Área do iframe (inicialmente oculta) -->
+        <div id="iframeContainer" class="iframe-container" style="display: none;">
+            <div class="iframe-header">
+                <span id="currentSite">Carregando...</span>
+                <div class="iframe-controls">
+                    <button id="refreshBtn" class="btn btn-sm">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button id="closeIframeBtn" class="btn btn-sm btn-danger">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <iframe id="iaFrame" src="" frameborder="0"></iframe>
         </div>
 
         <footer>
