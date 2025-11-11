@@ -27,7 +27,14 @@ const LINKS_PADRAO = [
     {"name": "ElevenLabs", "url": "https://elevenlabs.io"},
     {"name": "Leonardo AI", "url": "https://leonardo.ai"},
     {"name": "Pika Labs", "url": "https://pika.art"},
-    {"name": "Runway", "url": "https://runwayml.com"}
+    {"name": "Runway", "url": "https://runwayml.com"},
+    {"name": "Spell Ai","url":"https://www.spellai.art/"},
+    {"name": "Seedreen","url":"https://seedream.pro/"},
+    {"name": "Genspark","url": "https://www.genspark.ai/"},
+    {"name": "Loveart", "url": "https://www.lovart.ai/pt"},
+    {"name": "Opal Google", "url": "https://opal.google/landing/"},
+    {"name": "Longcat", "url": "https://longcat.chat/"},
+    {"name": "Skyreels", "url": "https://www.skyreels.ai/"}
 ];
 
 class IANavigator {
